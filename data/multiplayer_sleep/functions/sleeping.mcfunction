@@ -15,10 +15,10 @@ tag @a[scores={mpSleep.config=2}] add mpSleep.display2
 tag @a[scores={mpSleep.config=3}] add mpSleep.display3
 execute store result bossbar multiplayer_sleep:progress max run scoreboard players get #required mpSleep.dummy
 execute store result bossbar multiplayer_sleep:progress value run scoreboard players get #sleeping mpSleep.dummy
-bossbar set multiplayer_sleep:progress name [{"score":{"name":"#sleeping","objective":"mpSleep.dummy"}}," of ",{"score":{"name":"#required","objective":"mpSleep.dummy"}}," player(s) asleep"]
+bossbar set multiplayer_sleep:progress name [{"score":{"name":"#sleeping","objective":"mpSleep.dummy"}}," / ",{"score":{"name":"#required","objective":"mpSleep.dummy"}}," 玩家睡著了"]
 bossbar set multiplayer_sleep:progress players @a[tag=mpSleep.display1]
 bossbar set multiplayer_sleep:progress visible true
-title @a[tag=mpSleep.display2] actionbar [{"score":{"name":"#sleeping","objective":"mpSleep.dummy"},"color":"yellow"},{"text":" of ","color":"yellow"},{"score":{"name":"#required","objective":"mpSleep.dummy"},"color":"yellow"},{"text":" player(s) asleep","color":"yellow"}]
+title @a[tag=mpSleep.display2] actionbar [{"score":{"name":"#sleeping","objective":"mpSleep.dummy"},"color":"yellow"},{"text":" / ","color":"yellow"},{"score":{"name":"#required","objective":"mpSleep.dummy"},"color":"yellow"},{"text":" 玩家睡著了","color":"yellow"}]
 execute if score #immediateChat mpSleep.config matches 1 run function multiplayer_sleep:try_to_announce_asleep_immediately
 execute unless score #immediateChat mpSleep.config matches 1 run function multiplayer_sleep:try_to_announce_asleep
 execute unless score #asleep mpSleep.dummy < #required mpSleep.dummy run function multiplayer_sleep:sufficient_sleeping
